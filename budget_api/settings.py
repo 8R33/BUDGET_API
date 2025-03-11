@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d&t-)%0zrdqpsou4*c_6^#0(%g0_hb@fj*_u&pdd)ua+%@p0pu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['budget_api.onrender.com', 'budget-api-1vmx.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['budget_api.onrender.com', 'budget-api-1vmx.onrender.com', 'localhost','127.0.0.1:8000' ]
 
 
 # Application definition
@@ -70,10 +70,11 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings (allow frontend to connect)
-CORS_ALLOW_ALL_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+#CORS_ALLOW_ALL_ORIGINS = [
+ #   "http://localhost:5173",
+ #   "http://127.0.0.1:5173",
+#]
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 ROOT_URLCONF = 'budget_api.urls'
@@ -101,7 +102,11 @@ WSGI_APPLICATION = 'budget_api.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    #"default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    'default':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/ 'db.sqlite3',
+    }
 }
 
 
